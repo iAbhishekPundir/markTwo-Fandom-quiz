@@ -1,13 +1,13 @@
-var readlinesync = require("readline-sync");
+import chalk from 'chalk';
+import readlineSync from 'readline-sync';
 
+var userName = readlineSync.question(chalk.blue("Enter your Name? "));
+console.log(chalk.blue("Hello ") + chalk.blue(userName) + "!");
+console.log(chalk.yellow("Welcome to Cricket-Quiz App."));
 var score = 0; //score global variable
 
-console.log("Namaste!, Welcome to CLI Cricket-Quiz App.");
-
-var userName = readlinesync.question("Enter your Name? ")
-console.log("Hello " + userName + "!");
-console.log("In this quiz, you will be awarded 1 point for each correct answer. \nIf you beat High-Scores, your name will be displayed on the LeaderBoard.\n");
-console.log("Let's get started! \n");
+console.log(chalk.blue(chalk.white.bgGreen("In this quiz, you will be awarded 1 point for each correct answer.\n")));
+console.log(chalk.red("Let's get started! \n"));
 //highScore data
 var highScores = [
   {
@@ -23,7 +23,7 @@ var highScores = [
 var questions = [
   {
     num: "1",
-    question: "What are the small pieces of wood on top of the stumps called",
+    question: "1. What are the small pieces of wood on top of the stumps called",
     a: "A. Bails",
     b: "B. Sticks",
     c: "C. Stumpettes",
@@ -32,7 +32,7 @@ var questions = [
   },
   {
     num: "2",
-    question: "Who won the first ever ODI ICC Men's World cup? ",
+    question: "2. Who won the first ever ODI ICC Men's World cup? ",
     a: "A. India",
     b: "B. Australia",
     c: "C. South Africa",
@@ -41,16 +41,16 @@ var questions = [
   },
   {
     num: "3",
-    question: "How much is the distance between the wickets? ",
-    a: "A. 24",
-    b: "B. 22",
-    c: "C. 15",
-    d: "D. 16",
+    question: "3. How much is the distance between the wickets? ",
+    a: "A. 24 yards",
+    b: "B. 22 yards",
+    c: "C. 15 yards",
+    d: "D. 16 yards",
     ans: "b"
   },
   {
     num: "4",
-    question: "How many types of bowlers are there? ",
+    question: "4. How many types of bowlers are there? ",
     a: "A. 2",
     b: "B. 6",
     c: "C. 3",
@@ -59,7 +59,7 @@ var questions = [
   },
   {
     num: "5",
-    question: "Who is the first batsman to cross 10,000 runs in tests? ",
+    question: "5. Who is the first batsman to cross 10,000 runs in tests? ",
     a: "A. Sunil Gavaskar",
     b: "B. Sachin Tendulkar",
     c: "C. Allan Border",
@@ -68,7 +68,7 @@ var questions = [
   },
   {
     num: "6",
-    question: "Which has won most number of ICC World Cups? ",
+    question: "6. Which has won most number of ICC World Cups? ",
     a: "A. India",
     b: "B. Australia",
     c: "C. England",
@@ -77,7 +77,7 @@ var questions = [
   },
   {
     num: "7",
-    question: "What is the nickname of Sachin Tendulkar? ",
+    question: "7. What is the nickname of Sachin Tendulkar? ",
     a: "A. The Genius",
     b: "B. The Grand Master",
     c: "C. Expert of Cricket",
@@ -86,7 +86,7 @@ var questions = [
   },
   {
     num: "8",
-    question: "Which player has scored most ducks in International Cricket? ",
+    question: "8. Which player has scored most ducks in International Cricket? ",
     a: "A. Muttiah Muralitharan",
     b: "B. S T Jayasuriya	",
     c: "C. Shahid Afridi",
@@ -95,7 +95,7 @@ var questions = [
   },
   {
     num: "9",
-    question: "Which player has All-Time Highest ICC Men's Batting T20I ratings? ",
+    question: "9. Which player has All-Time Highest ICC Men's Batting T20I ratings? ",
     a: "A. Virat Kohli",
     b: "B. Aaron Finch",
     c: "C. Dawid Malan",
@@ -104,7 +104,7 @@ var questions = [
   },
   {
     num: "10",
-    question: "Which is the only bowler from India to take 10 wickets in a single match? ",
+    question: "10. Which is the only bowler from India to take 10 wickets in a single match? ",
     a: "A. Jasprit Bumrah",
     b: "B. Anil Kumble",
     c: "C. Harbhajan Singh",
@@ -113,7 +113,7 @@ var questions = [
   },
   {
     num: "11",
-    question: "Which player holds the record of fastest delivery till date? ",
+    question: "11. Which player holds the record of fastest delivery till date? ",
     a: "A. Brett Lee",
     b: "B. Mitchell Starc",
     c: "C. Umran Malik",
@@ -122,7 +122,7 @@ var questions = [
   },
   {
     num: "12",
-    question: "Where did cricket originate? ",
+    question: "12. Where did cricket originate? ",
     a: "A. India",
     b: "B. Australia",
     c: "C. South Africa",
@@ -131,7 +131,7 @@ var questions = [
   },
   {
     num: "13",
-    question: "What does LBW stand for? ",
+    question: "13. What does LBW stand for? ",
     a: "A. Long Ball Wide",
     b: "B. Leg Beyond Width",
     c: "C. Leg Before Wicket",
@@ -140,7 +140,7 @@ var questions = [
   },
   {
     num: "14",
-    question: "What do you call a referee in cricket? ",
+    question: "14. What do you call a referee in cricket? ",
     a: "A. An Umpire",
     b: "B. A vampire",
     c: "C. A cricketferee",
@@ -149,7 +149,7 @@ var questions = [
   },
   {
     num: "15",
-    question: "Who has hit the longest six in cricket history? ",
+    question: "15. Who has hit the longest six in cricket history? ",
     a: "A. Shahid Afridi",
     b: "B. Yuvraj Singh",
     c: "C. Liam Livingstone",
@@ -158,20 +158,18 @@ var questions = [
   },
   {
     num: "16",
-    question: "Who has scored the most runs in an ODI match? ",
+    question: "16. Who has scored the most runs in an ODI match? ",
     a: "A. Martin Guptil",
     b: "B. Virender Sehwag",
     c: "C. Sachin Tendulkar",
     d: "D. Rohit Sharma",
     ans: "d"
   },
-  
+
 ];
 
 
 function play(QnA) {
-  var questionNumber = QnA.num;
-  console.log("Here is your " + questionNumber + " question -> \n");
   console.log(QnA.question + "\n");
   console.log(QnA.a + "\n");
   console.log(QnA.b + "\n");
@@ -179,27 +177,27 @@ function play(QnA) {
   console.log(QnA.d + "\n");
 
 
-  var userAnswer = readlinesync.question("Enter your Answer Option: ");
+  var userAnswer = readlineSync.question("Enter your Answer Option: ");
 
   if (QnA.ans === userAnswer.toLowerCase()) {
-    console.log("\nYou are right!");
+    console.log(chalk.green("\nYou are right!"));
     score = score + 1;
   } else {
-    console.log("\nYou are wrong! ");
-    console.log("Correct Option is " + QnA.ans.toUpperCase() + ".");
+    console.log(chalk.red("\nYou are wrong! "));
+    console.log(chalk.greenBright("Correct Option is ") + QnA.ans.toUpperCase() + ".");
   }
-  console.log("Your current score is:", score + "\n");
+  console.log(chalk.blue("Your current score is:"), chalk.red(score) + "\n");
 }
 
 function go() {
   for (var i = 0; i < questions.length; i++) {
     play(questions[i]);
   }
-  console.log("You have completed the Quiz.\n");
+  console.log(chalk.red("***You have completed the Quiz.***\n"));
 }
 
 function calScore() {
-  console.log("Your final score is:", score);
+  console.log(chalk.yellow("Your final score is:"), chalk.green(score));
 
   console.log("\n");
 
@@ -216,12 +214,12 @@ function calScore() {
 }
 
 function printLeaderBoard() {
-  console.log("-----------Game Over-----------\n");
-  console.log("Here is the LeaderBoard as promised -> \n");
+  console.log(chalk.red("-----------Game Over-----------\n"));
+  console.log(chalk.blue("Here is the LeaderBoard -> \n"));
   for (var j = 0; j < highScores.length; j++) {
     var name = highScores[j].name;
     var score = highScores[j].score;
-    console.log("Name: " + name + ", Score:", score);
+    console.log("Name: " + chalk.green(name) + ", Score:", chalk.green(score));
     console.log("\n");
   }
 }
@@ -229,4 +227,4 @@ function printLeaderBoard() {
 go();
 calScore();
 printLeaderBoard();
-console.log("Thankyou for your time and patience! \nIf you enjoyed playing the quiz, then please share it to your Friends Circle.");
+console.log(chalk.blue("Thankyou for your time and patience! \nIf you enjoyed playing the quiz, then please share it with Friends"));
